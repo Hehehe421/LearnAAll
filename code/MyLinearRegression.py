@@ -21,7 +21,7 @@ class MyLinearRegression(object):
     def __init__(self, X, y, theta, alpha, num_iters):
         """X should inclue intercept column"""
         self.X = X
-        slef.y = y
+        self.y = y
 
         self.dimension = X.shape[1]
 
@@ -34,35 +34,35 @@ class MyLinearRegression(object):
         self.m = y.size
 
 
-def compute_cost(self):
-    """
-    Compute Loss function for Linear Regression
-    """
+    def compute_cost(self):
+        """
+        Compute Loss function for Linear Regression
+        """
+        
+        cost= (1.0/(2*self.m))*sum((self.X.dot(self.theta)- self.y).flatten()**2)
     
-    cost= (1.0/(2*self.m))*sum((self.X.dot(self.theta)- self.y).flatten()**2)
-
-    return cost
-
-def gradient_descent(self):
-    """Perform gradient descent to learn theta
-    by taking num_items gradient steps with 
-    learning rate alpha
-    """
-
-    Cost = []
-
-    for i in range(self.num_iters):
-        tempTheta = self.theta
-
-        tempTheta[0][0] = self.theta[0][0] - self.alpha*(1.0/m)*sum((self.X.dot(self.theta).flatten() - self.y)*self.X[:, 0])
-        tempTheta[1][0] = self.theta[1][0] - self.alpha*(1.0/m)*sum((self.X.dot(self.theta).flatten() - self.y)*self.X[:, 1])
-
-        self.theta[0][0] = tempTheta[0]
-        self.theta[1][0] = tempTheta[1]
-
-        Cost.append(self.compute_cost())
-    return self.theta, Cost
-
+        return cost
+    
+    def gradient_descent(self):
+        """Perform gradient descent to learn theta
+        by taking num_items gradient steps with 
+        learning rate alpha
+        """
+    
+        Cost = []
+    
+        for i in range(self.num_iters):
+            tempTheta = self.theta
+    
+            tempTheta[0][0] = self.theta[0][0] - self.alpha*(1.0/m)*sum((self.X.dot(self.theta).flatten() - self.y)*self.X[:, 0])
+            tempTheta[1][0] = self.theta[1][0] - self.alpha*(1.0/m)*sum((self.X.dot(self.theta).flatten() - self.y)*self.X[:, 1])
+    
+            self.theta[0][0] = tempTheta[0]
+            self.theta[1][0] = tempTheta[1]
+    
+            Cost.append(self.compute_cost())
+        return self.theta, Cost
+    
 data = np.array([
         [1. , 1.1],
         [0.9, 0.98],
